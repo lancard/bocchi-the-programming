@@ -22,6 +22,21 @@ function get_all_args(all_args list) { // you can get all args by list
 
 // Automatically progress the garbage collection at the end of the loop.
 function main_loop() {
+    items = list(32); // capacity
+    items.append(123);
+    items.append("hello");
+    items.append(true);
+
+    set_example = set(32); // capacity
+    set_example.add(123);
+    set_example.add("hello");
+    set_example.add(true);
+
+    map_example = map(16); // capacity
+    map_example.put("hello", 123);
+    map_example.put("test", true);
+    print(map_example["hello"]) // print 123
+
     add2 = register_function("application", "add2", "1.0.0", "function add2(a, b){ return a + b; }", true); // application library only for use internal.
 
     num1 = sqrt(100);
