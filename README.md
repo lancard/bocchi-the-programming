@@ -59,8 +59,8 @@ function main_loop() {
 
     print(greet("Bocchi"));
     
-    static_string = allocation("I'm a static variable."); // global variable allocation
-    free(static_var)
+    global_string = allocate_global("I'm a static variable."); // global variable allocation
+    free_global(global_string);
 
     return false; // If return true, It continues loop. otherwise, end of loop.
 }
