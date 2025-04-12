@@ -84,6 +84,8 @@ function main_loop() {
     result2 = add2(num1, num2);
     print("The imported sum is: " + result2);
 
+    unregister_function("application", "add2", "1.0.0"); // remove function
+
     print(greet("Bocchi"));
     
     global_string = allocate_global("I'm a static variable."); // global variable allocation
