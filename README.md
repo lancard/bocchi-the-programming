@@ -11,7 +11,11 @@ function add(a, b: int32) { // you can specific type of argument
 }
 
 function greet(name) {
-    return `Hello, {name}!`;
+    return f"Hello, {name}!";
+}
+
+function get_binary() {
+    return b"ff010203";
 }
 
 function get_all_args(all_args list) { // you can get all args by list
@@ -32,6 +36,8 @@ function main_loop() {
     if(get_type(cloned_string) === type_string) {
         print(cloned_string);
     }
+
+    compare_memory(test_string, cloned_string); // same memcmp
 
     items = list(32); // capacity
     items.append(123);
