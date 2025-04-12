@@ -27,6 +27,9 @@ function main_loop() {
     print(get_string_length(test_string)) // print 5
     print(test_string[2]) // print 3
 
+    cloned_string = clone(test_string) // clone copy (1 depth)
+    print(cloned_string)
+
     items = list(32); // capacity
     items.append(123);
     items.append("hello");
