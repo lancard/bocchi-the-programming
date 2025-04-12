@@ -62,6 +62,8 @@ function main_loop() {
     global_string = allocate_global("I'm a static variable."); // global variable allocation
     free_global(global_string);
 
+    dump_memory(); // display all memory
+
     return false; // If return true, It continues loop. otherwise, end of loop.
 }
 ```
