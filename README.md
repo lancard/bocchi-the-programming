@@ -28,6 +28,9 @@ function get_all_args(all_args list) { // you can get all args by list
 function main_loop() {
     name_age = {"name": "Alice", "age": 30}; // map example
 
+    print(get_keys(name_age)); // list : ["name", "age"]
+    print(get_values(name_age)); // list : ["Alice", 30]
+
     test_string = "12345";
     print(get_allocation_length(test_string)); // print 32 bytes (2^5) : capacity
     print(get_byte_length(test_string)); // print 20 bytes (UTF-32)
