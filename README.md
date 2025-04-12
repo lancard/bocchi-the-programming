@@ -26,6 +26,9 @@ function get_all_args(all_args list) { // you can get all args by list
 
 // Automatically progress the garbage collection at the end of the loop.
 function main_loop() {
+    global sqrt;
+    global print;
+
     name_age = {"name": "Alice", "age": 30}; // map example
 
     print(get_keys(name_age)); // list : ["name", "age"]
