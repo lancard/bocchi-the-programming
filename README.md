@@ -6,7 +6,7 @@ bocchi the programming! - new language project
 sqrt = import_function("math", "sqrt", "1.0.0");
 print = import_function("console", "print", "1.0.0");
 
-function add(a, b) {
+function add(a, b: int32) { // you can specific type of argument
     return a + b;
 }
 
@@ -85,7 +85,7 @@ struct Value {
   - int64, uint64
   - float32, float64
   - char  # UTF-32
-  - str  # UTF-32, not null-terminated
+  - string  # UTF-32, not null-terminated
 - Pseudo code for language flow
 - Compiler has these options:
   - "--strict": when finish program, it checks unfreed global variable and print memory leak errors.
