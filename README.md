@@ -100,8 +100,8 @@ struct Value {
     void* ptr2;          // Auxiliary pointer (e.g., for map key arrays, closure captures, etc.)
 
     uint64_t type;        // Type of the value (e.g., int8, uint32, list, map, string, function, etc.)
-    uint64_t origin;      // Memory origin (STACK, GC_HEAP, GLOBAL_HEAP, STATIC, CODE)
-    uint64_t is_ref;      // Reference flag (1 if it's a reference and should not be deallocated)
+    uint64_t memory_location;      // Memory location (STACK, GC_HEAP, GLOBAL_HEAP, STATIC, CODE)
+    uint64_t is_refernce; // Reference flag (1 if it's a reference and should not be deallocated)
 
     uint64_t length;     // Logical length (e.g., for lists/strings), or the actual value for integers
     uint64_t capacity;   // Capacity for array-like structures
