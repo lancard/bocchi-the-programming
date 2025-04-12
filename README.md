@@ -45,6 +45,10 @@ function main_loop() {
         print(cloned_string);
     }
 
+    if(get_memory_location(cloned_string) === memory_temporary) { // GC target memory. (in case of 'memory_global', not GC target)
+        print(cloned_string);
+    }
+
     compare_memory(test_string, cloned_string); // same memcmp
 
     items = list(32); // capacity
