@@ -80,6 +80,6 @@ def main_loop():
     
     # Static variable check
     static_var = alloc("I'm a static variable.")
-    return False
+    return false
 
 ```
