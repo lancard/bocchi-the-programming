@@ -23,12 +23,14 @@ function get_all_args(all_args list) { // you can get all args by list
 // Automatically progress the garbage collection at the end of the loop.
 function main_loop() {
     test_string = "12345";
-    print(get_byte_length(test_string)) // print 20 bytes (UTF-32)
-    print(get_string_length(test_string)) // print 5
-    print(test_string[2]) // print 3
+    print(get_byte_length(test_string)); // print 20 bytes (UTF-32)
+    print(get_string_length(test_string)); // print 5
+    print(test_string[2]); // print 3
 
-    cloned_string = clone(test_string) // clone copy (1 depth)
-    print(cloned_string)
+    cloned_string = clone(test_string); // clone copy (1 depth)
+    if(get_type(cloned_string) === type_string) {
+        print(cloned_string);
+    }
 
     items = list(32); // capacity
     items.append(123);
