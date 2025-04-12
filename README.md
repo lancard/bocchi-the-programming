@@ -23,6 +23,7 @@ function get_all_args(all_args list) { // you can get all args by list
 // Automatically progress the garbage collection at the end of the loop.
 function main_loop() {
     test_string = "12345";
+    print(get_allocation_length(test_string)); // print 32 bytes (2^5) : capacity
     print(get_byte_length(test_string)); // print 20 bytes (UTF-32)
     print(get_string_length(test_string)); // print 5
     print(test_string[2]); // print 3
