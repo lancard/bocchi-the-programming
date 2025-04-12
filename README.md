@@ -127,9 +127,10 @@ struct Value {
 - This structure enables real-time monitoring of memory allocation status.
 - UTF-32 is used to prioritize efficiency in string processing.
 - Functions are version-controlled individually by default, and the CODE_LIBRARY area is designed to support downloading from the internet in the future.
+- Specifies the functions and constants required in the executable file (metadata). Loads the functions and constants required before running the program.
 - Provides built-in linear memory structures: dequeue, list, map, and set.
 - Defaults to a 64-bit architecture.
-- The language includes its own compiler, allowing dynamic compilation and library registration.
+- The language includes its own compiler, allowing dynamic compilation and library registration. (experimental)
 ```
   register_function("math", "sqrt", "1.0.0", "function add(a, b){ return a + b;}")
 ```
