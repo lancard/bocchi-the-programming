@@ -5,6 +5,8 @@ bocchi the programming! - new language project
 ```
 sqrt = import_function("math", "sqrt", "1.0.0");
 print = import_function("console", "print", "1.0.0");
+math_constants = import_constants("math", "1.0.0");
+default_constants = import_constants("default", "1.0.0");
 
 function add(a, b: int32) { // you can specific type of argument
     return a + b;
@@ -28,8 +30,14 @@ function get_all_args(all_args list) { // you can get all args by list
 function main_loop() {
     global sqrt;
     global print;
+    global math_constants;
+    global default_constants;
+
+    print(math.pi); // 3.14...
 
     name_age = {"name": "Alice", "age": 30}; // map example
+    print(name_age.name); // print Alice
+    print(name_age["name"]); // print Alice
 
     print(get_keys(name_age)); // list : ["name", "age"]
     print(get_values(name_age)); // list : ["Alice", 30]
@@ -41,11 +49,11 @@ function main_loop() {
     print(test_string[2]); // print 3
 
     cloned_string = clone(test_string); // clone copy (1 depth)
-    if(get_type(cloned_string) === type_string) {
+    if(get_type(cloned_string) === default_constants.type_string) {
         print(cloned_string);
     }
 
-    if(get_memory_location(cloned_string) === memory_temporary) { // GC target memory. (in case of 'memory_global', not GC target)
+    if(get_memory_location(cloned_string) === default_constants.memory_temporary) { // GC target memory. (in case of 'memory_global', not GC target)
         print(cloned_string);
     }
 
