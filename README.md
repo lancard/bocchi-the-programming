@@ -98,7 +98,7 @@ function main_loop() {
 ```
 
 # concept
-- having a grammar similar to python
+- having a grammar similar to javascript / python
 - However, the system is programmable, so the OS can be developed
 - Prioritizes time complexity over space complexity
 - Strength in string processing.
