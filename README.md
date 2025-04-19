@@ -3,12 +3,12 @@ bocchi the programming! - new language project
 
 # syntax example
 ```
-sqrt = import_function("math", "sqrt", "1.0.0");
-print = import_function("console", "print", "1.0.0");
-math_constants = import_constants("math", "1.0.0");
-default_constants = import_constants("default", "1.0.0");
+const sqrt = import_function("math", "sqrt", "1.0.0");
+const function print = import_function("console", "print", "1.0.0");
+const math_constants = import_constants("math", "1.0.0");
+const default_constants = import_constants("default", "1.0.0");
 
-function add(a, b: int32) { // you can specific type of argument
+function add(a, int32 b) { // you can specific type of argument
     return a + b;
 }
 
@@ -35,20 +35,20 @@ function main_loop() {
 
     print(math.pi); // 3.14...
 
-    name_age = {"name": "Alice", "age": 30}; // map example
+    map name_age = {"name": "Alice", "age": 30}; // map example
     print(name_age.name); // print Alice
     print(name_age["name"]); // print Alice
 
     print(get_keys(name_age)); // list : ["name", "age"]
     print(get_values(name_age)); // list : ["Alice", 30]
 
-    test_string = "12345";
+    string test_string = "12345";
     print(get_allocation_length(test_string)); // print 32 bytes (2^5) : capacity
     print(get_byte_length(test_string)); // print 20 bytes (UTF-32)
     print(get_string_length(test_string)); // print 5
     print(test_string[2]); // print 3
 
-    cloned_string = clone(test_string); // clone copy (1 depth)
+    string cloned_string = clone(test_string); // clone copy (1 depth)
     if(get_type(cloned_string) === default_constants.type_string) {
         print(cloned_string);
     }
@@ -74,21 +74,21 @@ function main_loop() {
     map_example.put("test", true);
     print(map_example["hello"]) // print 123
 
-    add2 = register_function("application", "add2", "1.0.0", "function add2(a, b){ return a + b; }", true); // application library only for use internal.
+    function add2 = register_function("application", "add2", "1.0.0", "function add2(a, b){ return a + b; }", true); // application library only for use internal.
 
-    num1 = sqrt(100);
-    num2 = 20;
+    var num1 = sqrt(100);
+    var num2 = 20;
 
-    result1 = add(num1, num2);
+    var result1 = add(num1, num2);
     print("The sum is: " + result1);
-    result2 = add2(num1, num2);
+    var result2 = add2(num1, num2);
     print("The imported sum is: " + result2);
 
     unregister_function("application", "add2", "1.0.0"); // remove function
 
     print(greet("Bocchi"));
     
-    global_string = allocate_global("I'm a static variable."); // global variable allocation
+    var global_string = allocate_global("I'm a static variable."); // global variable allocation
     free_global(global_string);
 
     dump_memory(); // display all memory
@@ -141,19 +141,25 @@ struct Value {
   - int32, uint32
   - int64, uint64
   - float32, float64
-  - char  # UTF-32
+  - char  # UTF-32 (4byte)
   - string  # UTF-32, not null-terminated
+  - function
+  - map
+  - list
+  - set
 - Pseudo code for language flow
 - Compiler has these options:
   - "--strict": when finish program, it checks unfreed global variable and print memory leak errors.
   - "--register-function=math@sqrt@1.0.0": add function into library. (not generate main_loop)
   - "--no-main-loop": do not make main_loop. use main instead. (for making OS, driver, etc...)
+  - "--expose-gc": expose garbage collection function gc()
 ```
 [Program Start]
 → Load static/global resources
-→ while (main_loop() == true):
-      - Execute main_loop()
-      - Clear temp heap (GC heap)
+→ while (true):
+      - is_continue = main_loop() // Execute main loop
+      - gc() // Clear temp heap (GC heap)
+      - if(!is_continue) break
 → Check unfreed static memory
 → Exit
 ```
