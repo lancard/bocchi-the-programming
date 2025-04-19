@@ -45,7 +45,7 @@ function main_loop() {
     global math_constants;
     global default_constants;
 
-    person bocchi; // same as 'list bocchi'
+    person bocchi; // same as 'list bocchi = list(2)'
     bocchi@name = "Guitar"; // same as 'bocchi[1] = "Guitar"'
     print(bocchi@name); // same as 'print(bocchi[1])'
 
