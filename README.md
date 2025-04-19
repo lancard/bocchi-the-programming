@@ -169,7 +169,7 @@ struct Value {
 → Load static/global resources
 → while (true):
       - is_continue = main_loop() // Execute main loop
-      - gc() // Clear temp heap (GC heap)
+      - gc() // Clear temp heap (GC heap), also auto deallocation GC_HEAP 'resource'
       - if(!is_continue) break
 → Check unfreed static memory
 → Exit
