@@ -58,7 +58,7 @@ function main_loop() {
         print(txt);
     }
 
-    print(math.pi); // 3.14...
+    print(math_constants.pi); // 3.14...
 
     map name_age = {"name": "Alice", "age": 30}; // map example
     print(name_age.name); // print Alice
