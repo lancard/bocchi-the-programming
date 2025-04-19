@@ -3,6 +3,14 @@ bocchi the programming! - new language project
 
 # syntax example
 ```
+// load macro (compile time processing)
+#define_structure person {
+    string name;
+    int age;
+};
+
+#load_structure("test_structure.structure");
+
 const open_file = import_function("file", "open_file", "1.0.0");
 const load_text_from_file = import_function("file", "load_text_from_file", "1.0.0");
 const load_json_from_file = import_function("file", "load_json_from_file", "1.0.0");
@@ -36,6 +44,10 @@ function main_loop() {
     global print;
     global math_constants;
     global default_constants;
+
+    person bocchi; // same as 'list bocchi'
+    bocchi@name = "Guitar"; // same as 'bocchi[1] = "Guitar"'
+    print(bocchi@name); // same as 'print(bocchi[1])'
 
     // inline assembly
     __asm__("mov cr0, eax");
