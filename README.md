@@ -3,6 +3,11 @@ bocchi the programming! - new language project
 
 # syntax example
 ```
+struct abc {
+    int64 a;
+    string b;
+};
+
 const open_file = import_function("file", "open_file", "1.0.0");
 const load_text_from_file = import_function("file", "load_text_from_file", "1.0.0");
 const load_json_from_file = import_function("file", "load_json_from_file", "1.0.0");
@@ -36,6 +41,9 @@ function main_loop() {
     global print;
     global math_constants;
     global default_constants;
+
+    // inline assembly
+    __asm__("mov cr0, eax");
 
     // resource deallocation when out of scope.
     with(resource file = open_file("readme.txt")) {
