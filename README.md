@@ -3,6 +3,10 @@ bocchi the programming! - new language project
 
 # syntax example
 ```
+const open_file = import_function("file", "open_file", "1.0.0");
+const load_text_from_file = import_function("file", "load_text_from_file", "1.0.0");
+const load_json_from_file = import_function("file", "load_json_from_file", "1.0.0");
+const load_binary_from_file = import_function("file", "load_binary_from_file", "1.0.0");
 const sqrt = import_function("math", "sqrt", "1.0.0");
 const function print = import_function("console", "print", "1.0.0");
 const math_constants = import_constants("math", "1.0.0");
@@ -32,6 +36,12 @@ function main_loop() {
     global print;
     global math_constants;
     global default_constants;
+
+    // resource deallocation when out of scope.
+    with(resource file = open_file("readme.txt")) {
+        string txt = load_text_from_file(file);
+        print(txt);
+    }
 
     print(math.pi); // 3.14...
 
@@ -107,9 +117,9 @@ function main_loop() {
 ```c
 struct Value {
     void* ptr;           // Pointer to the data or function code
-    void* ptr2;          // Auxiliary pointer (e.g., for map key arrays, closure captures, etc.)
+    void* ptr2;          // Auxiliary pointer (e.g., for map key arrays, closure captures, etc.), also use for resource deallocator
 
-    uint64_t type;        // Type of the value (e.g., int8, uint32, list, map, string, function, etc.)
+    uint64_t type;        // Type of the value (e.g., int8, uint32, list, map, string, function, resource, etc.)
     uint64_t memory_location;      // Memory location (STACK, GC_HEAP, GLOBAL_HEAP, STATIC, CODE)
     uint64_t is_refernce; // Reference flag (1 if it's a reference and should not be deallocated)
 
@@ -147,6 +157,7 @@ struct Value {
   - map
   - list
   - set
+  - resource // for file, socket, etc
 - Pseudo code for language flow
 - Compiler has these options:
   - "--strict": when finish program, it checks unfreed global variable and print memory leak errors.
