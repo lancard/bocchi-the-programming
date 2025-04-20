@@ -18,8 +18,10 @@ const load_json_from_file = #import_function("file", "load_json_from_file", "1.0
 const load_binary_from_file = #import_function("file", "load_binary_from_file", "1.0.0");
 const sqrt = #import_function("math", "sqrt", "1.0.0");
 const function print = #import_function("console", "print", "1.0.0");
-const math_constants = #import_constants("math", "1.0.0");
-const default_constants = #import_constants("default", "1.0.0");
+const math_values = #import_values("math", "1.0.0");
+const default_values = #import_values("default", "1.0.0");
+const system_variables = import_values("system", "1.0.0"); // system info dynamic only (not compile time)
+const environment_variables = import_values("environment", "1.0.0"); // environment variable dynamic only (not compile time)
 
 function add(a, int32 b) { // you can specific type of argument
     return a + b;
@@ -43,8 +45,8 @@ function get_all_args(all_args list) { // you can get all args by list
 function main_loop() {
     global sqrt;
     global print;
-    global math_constants;
-    global default_constants;
+    global math_values;
+    global default_values;
 
     person bocchi; // same as 'list bocchi = list(2)'
     bocchi@name = "Guitar"; // same as 'bocchi[1] = "Guitar"'
@@ -59,7 +61,7 @@ function main_loop() {
         print(txt);
     }
 
-    print(math_constants.pi); // 3.14...
+    print(math_values.pi); // 3.14...
 
     map name_age = {"name": "Alice", "age": 30}; // map example
     print(name_age.name); // print Alice
@@ -75,11 +77,11 @@ function main_loop() {
     print(test_string[2]); // print 3
 
     string cloned_string = clone(test_string); // clone copy (1 depth)
-    if(get_type(cloned_string) === default_constants.type_string) {
+    if(get_type(cloned_string) === default_values.type_string) {
         print(cloned_string);
     }
 
-    if(get_memory_location(cloned_string) === default_constants.memory_temporary) { // GC target memory. (in case of 'memory_global', not GC target)
+    if(get_memory_location(cloned_string) === default_values.memory_temporary) { // GC target memory. (in case of 'memory_global', not GC target)
         print(cloned_string);
     }
 
@@ -153,7 +155,7 @@ struct Value {
 - This structure enables real-time monitoring of memory allocation status.
 - UTF-32 is used to prioritize efficiency in string processing.
 - Functions are version-controlled individually by default, and the CODE_LIBRARY area is designed to support downloading from the internet in the future.
-- Specifies the functions and constants required in the executable file (metadata). Loads the functions and constants required before running the program.
+- Specifies the functions and values required in the executable file (metadata). Loads the functions and values required before running the program.
 - Provides built-in linear memory structures: dequeue, list, map, and set.
 - Defaults to a 64-bit architecture.
 - The language includes its own compiler, allowing dynamic compilation and library registration. (experimental)
