@@ -102,7 +102,7 @@ function main_loop() {
     map_example.put("test", true);
     print(map_example["hello"]) // print 123
 
-    function add2 = register_function("application", "add2", "1.0.0", "function add2(a, b){ return a + b; }", true); // application library only for use internal.
+    function add2 = register_function("application", "add2", "1.0.0", "function add2(a, b){ return a + b; }", system@architecture); // application library only for use internal. architecture for compile
 
     var num1 = sqrt(100);
     var num2 = 20;
