@@ -3,7 +3,7 @@ bocchi the programming! - new language project
 
 # syntax example
 ```
-// load macro (compile time processing)
+// load macro (compile time processing, but also structure info will load memory for dynamic resolving)
 #define_structure person {
     string name;
     int age;
