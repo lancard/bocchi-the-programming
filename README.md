@@ -11,14 +11,15 @@ bocchi the programming! - new language project
 
 #load_structure("test_structure.structure");
 
-const open_file = import_function("file", "open_file", "1.0.0");
-const load_text_from_file = import_function("file", "load_text_from_file", "1.0.0");
-const load_json_from_file = import_function("file", "load_json_from_file", "1.0.0");
-const load_binary_from_file = import_function("file", "load_binary_from_file", "1.0.0");
-const sqrt = import_function("math", "sqrt", "1.0.0");
-const function print = import_function("console", "print", "1.0.0");
-const math_constants = import_constants("math", "1.0.0");
-const default_constants = import_constants("default", "1.0.0");
+const open_file = #import_function("file", "open_file", "1.0.0"); // static linking open_file (generally, '#' means static linking or preprocessor or compile time processing)
+const open_file_dynamic = import_function("file", "open_file", "1.0.0"); // dynamic linking (without '#')
+const load_text_from_file = #import_function("file", "load_text_from_file", "1.0.0");
+const load_json_from_file = #import_function("file", "load_json_from_file", "1.0.0");
+const load_binary_from_file = #import_function("file", "load_binary_from_file", "1.0.0");
+const sqrt = #import_function("math", "sqrt", "1.0.0");
+const function print = #import_function("console", "print", "1.0.0");
+const math_constants = #import_constants("math", "1.0.0");
+const default_constants = #import_constants("default", "1.0.0");
 
 function add(a, int32 b) { // you can specific type of argument
     return a + b;
