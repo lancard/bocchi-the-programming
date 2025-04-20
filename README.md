@@ -1,3 +1,7 @@
+# stop thingking
+It was for OS development purposes, but I was pushed by the lightness of the C language, and I gave up because the memory waste from abstraction was too big.
+Turn to development at the application level.  However, functions, etc., use system calls. The basic concept is to be taken.
+
 # bocchi-the-programming
 bocchi the programming! - new language project
 
